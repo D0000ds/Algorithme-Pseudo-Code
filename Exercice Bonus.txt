@@ -1,0 +1,109 @@
+Exercice Facture (Bonus)
+
+Variables
+
+var bool_remise en booleen
+var montant_remise en simple
+var montant_HT en simple
+var quantite en entier
+var montant_total_HT en simple <- 0
+var montant_TTC en simple
+var montant_TVA en simple
+var montant_net en simple
+var code_livraison en string
+var montant_net_ht en simple
+var montant_livraison en simple
+
+Constantes
+const taux_remise en numerique <- 0.10
+const taux_tva en numerique <- 0.196
+const frais_code en entier (1 à 4)
+	frais_code(1) <- 10
+	frais_code(2) <- 20
+	frais_code(3) <- 30
+	frais_code(4) <- 0
+
+
+Début 
+ecrire "scannez article"
+lire montant_HT
+
+tant que montant_HT <> 0
+
+	ecrire "donnez la quantité"
+	lire quantite
+
+	montant_total_HT <- montant_total_HT + (montant_HT*quantite)
+
+	ecrire "scannez article"
+	lire montant_HT
+
+fin tant que
+
+ecrire "y a t il une remise"
+lire bool_remise
+
+si bool_remise = vrai 
+	montant_remise = montant_total_HT*taux_remise
+sinon 
+	montant_remise <- 0
+fin si
+
+ecrire "donnez le code de livraison"
+lire code_livraison
+
+montant_livraison <- frais_code(code_livraison)
+
+ecrire "le motant brute est de : " montant_total_HT
+ecrire "la remise est de :" montant_remise
+ecrire "les frais de livraison sont de :" montant_livraison
+
+montant_net_ht <- montant_total_HT - montant_remise
+montant_TVA <- montant_total_HT*taux_tva
+montant_TTC <- montant_net_ht + montant_TVA
+montant_net <- montant_TTC + montant_livraison
+
+ecrire "le montant total de la TVA est de "montant_TVA
+ecrire "le montant total TTC est de :" montant_TTC
+ecrire "le montant net a payer (avec livraison) est de :" montant_net
+fin
+
+Exercice Salaire (Bonus)
+
+Variables
+var salaire en simple
+var salaire_total en simple
+var chiffre_d_affaire en entier
+var nb_kilometre en entier
+var prime_kilometre en simple
+
+
+
+Constantes
+const remboursement_kilometrique en simple <- 0.26
+const ca_prime en simple (1 à 2)
+	ca(1) <- 0.02
+	ca(2) <- 0.04
+
+
+debut
+ecrire "De combien est votre salaire"
+lire salaire
+
+ecrire "de combien est le chiffre d'affaire"
+lire chiffre_d_affaire
+
+si chiffre_d_affaire > 50000
+	salaire_total <- salaire + (ca(2)* chiffre_d_affaire)
+sinon
+	salaire_total <- salaire + (ca(1)* chiffre_d_affaire)
+fin si
+
+ecrire "combien de kilomètre vous faites ?"
+lire nb_kilometre
+
+prime_kilometre <- remboursement_kilometrique*nb_kilometre
+salaire_total <- prime_kilometre + salaire_total
+
+ecrire"votre salaire total est de " salaire_total
+fin
