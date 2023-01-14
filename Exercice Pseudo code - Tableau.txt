@@ -1,0 +1,9 @@
+Exercice Pseudo code - Tableau
+
+Exercice 1:
+tableau valeur[6] en numérique
+var i en numérique
+début
+pour (i < 0 à 6)
+    val
+fin
